@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jap-deployment
+  labels:
+    app: djjap
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: djjap
+  template:
+    metadata:
+      labels:
+        app: djjap
+    spec:
+      containers:
+      - name: djap
+        image: japanjot15/app1:latest
+        ports:
+        - containerPort: 8000
