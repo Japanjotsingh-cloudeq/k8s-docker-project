@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: jap-deployment
+  namespace: ingress-nginx 
   labels:
     app: djjap
 spec:
@@ -16,6 +17,6 @@ spec:
     spec:
       containers:
       - name: djap
-        image: japanjot15/app1:latest
+        image: japanjot15/kuber-jap
         ports:
         - containerPort: 8000
