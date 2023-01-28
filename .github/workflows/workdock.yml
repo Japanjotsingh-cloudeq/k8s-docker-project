@@ -22,7 +22,7 @@ jobs:
         password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
     - name: Build the Docker Image from Dockerfile
-      run: docker build -t japanjotcmdworkflow:update .
+      run: docker build -t japanjot15/japanjotcmdworkflow:update .
 
     - name: Show Images in my Docker Registry
       run: docker images 
