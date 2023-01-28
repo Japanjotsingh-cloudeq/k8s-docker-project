@@ -1,0 +1,47 @@
+name: Docker Image CI
+
+on:
+  workflow_dispatch:
+    
+  push:
+    branches: [ "main" ]
+
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+    # defaults:
+    #   run:
+    #     working-directory: .
+
+    steps:
+    - name: Login to Docker Hub
+      uses: docker/login-action@v2
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_PASSWORD }}
+    - name: Build and push
+      uses: docker/build-push-action@v3
+      with:
+        push: false
+        tags: japanjot15/app1:latestv1
+    # - uses: addnab/docker-run-action@v3
+    #   with:
+    #     image: japanjot15/app1
+    #     run: echo hell o 
+    - name: docker run 
+      run: docker run -d -p8001:8000 japanjot15/app1:latestv1
+    - name: docker ps 
+      run: docker ps -a
+    
+    
+    
+    
+    
+    
+    
+    # - name: build
+    #   run:  docker build -t japimage . 
+    #  # run: docker push japanjot15/djangostart:japppppppppp
